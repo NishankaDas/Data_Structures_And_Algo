@@ -105,7 +105,11 @@ void insert2(){
         newnode2->link = temp->link;
 	    temp->link = newnode2;
     }
-	else{
+    else if(x<0)
+    {
+    	printf("\nIndex dosen't exist\n");
+    }
+    else{
 		newnode2->link = prev->link;
 		prev->link= newnode2;
 	}
