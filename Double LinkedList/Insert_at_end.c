@@ -7,48 +7,48 @@ typedef struct n{
     struct n *next;
 }node;
 node *head = NULL;
-node *head2;
-void insert(int data)
-{
-    node *nnode = (node *)malloc(sizeof(node));
-    nnode->data = data;
-    node* temp1;
+node *head2 = NULL;
+void insert(int value)
+{ 
    
+    node *nnode = (node *)malloc(sizeof(node));
+    nnode->pre = NULL;
+    nnode->data= value;
     nnode->next = NULL;
-    if(head == NULL)
+    if(head==NULL)
     {
-        nnode->pre = NULL;
         head = nnode;
        
     }
     else{
-        temp1 = head;
-        while(temp1->next!=NULL){
-            temp1 = temp1->next;
-           
+        node *temp;
+        temp = head;
+        while(temp->next!=NULL)
+        {
+            
+            temp = temp->next;
         }
-        nnode->pre = temp1;
-        temp1->next = nnode;
-
+        nnode->pre = temp;
+        temp->next = nnode;
     }
     head2 = nnode;
 }
-void seen(node *r)
+void see1(node *see)
 {
-    printf("By Head display...\n");
-    while(r!=NULL)
+    printf("Data by Head ... \n");
+    while(see!=NULL)
     {
-        printf("%d\n",r->data);
-        r = r->next;
+        printf("%d\n",see->data);
+        see = see->next;
     }
 }
-void seer(node *r)
+void see2(node *see)
 {
-    printf("By Head2 display...\n");
-    while(r!=NULL)
+    printf("Data by Head2 ... \n");
+    while(see!=NULL)
     {
-        printf("%d\n",r->data);
-        r = r->pre;
+        printf("%d\n",see->data);
+        see = see->pre;
     }
 }
 int main()
@@ -64,26 +64,18 @@ int main()
         insert(x);
         j++;
     }
-    seen(head);
-    seer(head2);
-    while(1)
+    see1(head);
+    see2(head2);
+    printf("Enter 1 to insert again\nIt will be added at end \t");
+    scanf("%d",&j);
+    if(j==1)
     {
-        printf("Enter 1 to enter data and any integar to exit\t");
-        int p,m;
-        scanf("%d",&p);
+        printf("\nEnter data ... ");
+        int q;
+        scanf("%d",&q);
+        insert(q);
        
-        if(p==1)
-        {
-            printf("Enter data...\t");
-            scanf("%d",&m);
-            insert(m);
-            seen(head);
-            seer(head2);
-        }
-        else
-        { 
-            break;
-        }
-           
+        see1(head);
+        see2(head2);
     }
 }   
