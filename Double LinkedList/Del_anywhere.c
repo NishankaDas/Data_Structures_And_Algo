@@ -1,4 +1,4 @@
-// Delete Any Node
+//Delete any node
 #include<stdio.h>
 #include<stdlib.h>
 typedef struct n{
@@ -41,7 +41,7 @@ void del(int de){
         pree = temp;
         temp = temp->next;
     }
-    if(pree!=NULL)
+    if(pree!=NULL && de == temp->data)
     {
         if(temp->next)
         {
@@ -55,7 +55,7 @@ void del(int de){
             free(temp);
         }
     }
-    else{
+    else if(pree == NULL && de == temp->data){
         if(temp->next){
 
             temp->next->pre = NULL;
@@ -69,6 +69,9 @@ void del(int de){
                 free(temp);
             }
         }
+    }
+    else{
+        printf("Nei nei osob kichu nei\n R akbar dekhai");
     }
 
 }
