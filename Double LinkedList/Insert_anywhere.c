@@ -60,7 +60,10 @@ void add_after(int data)
         if(temp->next)
             temp->next->pre = newnode;
         temp->next = newnode;
+        if(temp == head2)
+        {
         head2 = newnode;
+        }
     }
 }
 void add_before(int data)
@@ -117,19 +120,36 @@ void see2(node *see)
     }
 }
 int main()
-{
-    make(99);
-    make(88);
-    make(77);
+{ int i,j=0;
+    printf("\n\nEnter how many node you want\t");
+    scanf("%d",&i);
+    while(j<i)
+    {
+        printf("Enter data ... ");
+        int x;
+        scanf("%d",&x);
+        make(x);
+        j++;
+    }
     see1(head);
     see2(head2);
-    printf("\nEnter the node after which you want to add node \t");
-    int g,m;
-    scanf("%d",&g);
-    add_after(g);
+     int g,m,f;
+    printf("If you want to insert a node after a node press 1\nIf you want to insert a node before a node press 2\n");
+    scanf("%d",&f);
+    if(f==1){
+        printf("\nEnter the node after which you want to add node \t");
+    
+        scanf("%d",&g);
+        add_after(g);
+    }
+    else if(f==2){
      printf("\nEnter the node before which you want to add node \t");
       scanf("%d",&m);
      add_before(m);
+     }
+     else{
+        printf("\nBhuter raja dilo bor 1 , 2 \n 3,4,5 kichu nei r\n");
+     }
      see1(head);
      see2(head2);
     
